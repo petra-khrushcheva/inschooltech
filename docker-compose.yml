@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+
+  db:
+    container_name: postgresql_db
+    image: postgres:14
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data
+
+
+  inschooltech:
+    container_name: inschooltech
+    build: .
+    image: inschooltech
+    environment:
+      - SECRET_KEY=${SECRET_KEY}
+      - DB_ENGINE=${DB_ENGINE}
+      - DB_NAME=${DB_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+    command: bash -c "cd inschooltech && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./inschooltech:/app/inschooltech
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: always
+
+# volumes:
+#   pgdata:
