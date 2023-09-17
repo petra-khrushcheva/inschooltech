@@ -61,5 +61,4 @@ class Score(BaseModel):
 
     def __str__(self):
         return (f'{self.indicator_metric_id.indicator_id} - '
-                '{self.indicator_metric_id.metric_id}'
-                )
+                '{self.indicator_metric_id.metric_id}')
