@@ -16,6 +16,14 @@ services:
     #   - pgdata:/var/lib/postgresql/data
 
 
+  redis:
+    container_name: redis
+    restart: always
+    image: redis:7.2
+    ports:
+      - 6379:6379
+
+
   inschooltech:
     container_name: inschooltech
     build: .
@@ -34,6 +42,7 @@ services:
     ports:
       - 8000:8000
     depends_on:
+      - redis
       - db
     restart: always
 
