@@ -8,11 +8,13 @@ def api_client():
 
 
 @pytest.fixture
-def user_token(api_client, user):
-    response = api_client.post(
+def auth_api_client(user):
+    auth_client = APIClient()
+    response = auth_client.post(
         '/auth/jwt/create/',
         dict(username=user.username, password='somep4$$')
     )
     token = response.data["access"]
     bearer = f'Bearer {token}'
-    return bearer
+    auth_client.credentials(HTTP_AUTHORIZATION=bearer)
+    return auth_client
