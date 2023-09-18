@@ -9,11 +9,10 @@ from public.models import Lab, Test
 
 @pytest.fixture(autouse=True)
 def lab():
-    lab_1 = Lab.objects.create(
+    return Lab.objects.create(
         name='Lab 1',
         id='5032d958-93ff-4e64-b620-6507753100ac'
     )
-    return lab_1
 
 
 # Фикстура для модели Test
