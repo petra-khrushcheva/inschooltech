@@ -13,6 +13,6 @@ class TestAPIView(generics.ListAPIView):
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = ('lab_id', 'is_active')
 
-    @method_decorator(cache_page(60*10))
+    @method_decorator(cache_page(60 * 10))
     def dispatch(self, *args, **kwargs):
         return super(TestAPIView, self).dispatch(*args, **kwargs)
