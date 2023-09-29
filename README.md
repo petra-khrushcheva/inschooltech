@@ -63,7 +63,4 @@ http://127.0.0.1:8000/auth/users/
 ```
 http://127.0.0.1:8000/auth/jwt/create/
 ``` 
-- Укажите токен (без слова Token или Bearer) в поле Authorize:
-```
-http://127.0.0.1:8000/auth/jwt/create/
-``` 
+- Укажите токен (без слова Token или Bearer) в поле Authorize.
