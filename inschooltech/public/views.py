@@ -1,10 +1,10 @@
+from django.db.models import Prefetch
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics
-from django.db.models import Prefetch
-
 from indicators.models import Score
+from rest_framework import generics
+
 from .models import Test
 from .serializers import TestSerializer
 
