@@ -38,7 +38,7 @@ docker compose up
 ### Для запуска тестов:
 - При запущенных контейнерах войдите в контейнер с джанго приложением:
 ```
-exec -it inschooltech sh
+docker exec -it inschooltech sh
 ``` 
 - Перейдите в директорию inschooltech:
 ```
